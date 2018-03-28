@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <script src="../plugin/react.js"></script>
+    <script src="../plugin/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+
+    <script type="text/babel">
+
+    window.onload = function() {
+        let arr = [
+            <div key="yuan">hello yuan</div>,
+            <div key="will">hello will</div>,
+            <div key="react">hello react</div>
+        ];
+       
+        ReactDOM.render(
+            <div>{arr}</div>,
+            document.getElementById('react-dom')
+        )
+    }
+    </script>
+</head>
+<body>
+    <div id="react-dom"></div>
+</body>
+</html>
+

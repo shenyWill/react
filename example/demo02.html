@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <script src="../plugin/react.js"></script>
+    <script src="../plugin/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+
+    <script type="text/babel">
+    // 切记：script标签必须使用 type="text/babel"
+    window.onload = function() {
+        var HelloComponent =React.createClass({
+            render:function(){
+                return <h1>Hello {this.props.name ? this.props.name : 'world'}</h1>;
+            }
+        });
+        ReactDOM.render(
+            <HelloComponent name="will"/>,
+            document.getElementById('react-dom')
+        )
+    }
+    </script>
+</head>
+<body>
+    <div id="react-dom"></div>
+</body>
+</html>
