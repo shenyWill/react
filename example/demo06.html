@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../plugin/react.js"></script>
+    <script src="../plugin/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+    <script type="text/babel">        
+        window.onload = function() { 
+            // 组件首字母一定要大写
+            var TextBoxComponent = React.createClass({
+                render:function() {
+                    return (
+                        <p>
+                        <span>{'hello ' + this.props.name}</span>
+                        </p>
+                    )
+                }
+            });
+            ReactDOM.render(<TextBoxComponent name="will"/>,document.getElementById("react-dom"));
+        }
+        </script>
+</head>
+
+<body>
+    <div id="react-dom"></div>
+</body>
+
+</html>
+
