@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../plugin/react.js"></script>
+    <script src="../plugin/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+    <script type="text/babel">        
+        window.onload = function() { 
+            // 组件首字母一定要大写
+            var TextBoxComponent = React.createClass({
+                getInitialState:function(){
+                    console.log('1->gitInitialState');
+                    return {
+                        num:1
+                    }
+                },
+                componentWillMount:function() {
+                    console.log('2->componentWillMount');
+                },
+                componentDidMount:function() {
+                    console.log('3->componentDidMount');
+                },
+                componentWillUpdate:function() {
+                    console.log('4->componentWillUpdate');
+                },
+                componentDidUpdate:function() {
+                    console.log('5->componentDidUpdate');
+                },
+                handleClick:function() {
+                    this.setState({
+                        num:this.state.num +1
+                    })
+                },
+                render:function() {
+                    return (
+                        <p>
+                            <span>{this.state.num}</span>
+                            <button onClick={this.handleClick}>点击</button>
+                        </p>
+                    )
+                }
+            });
+            ReactDOM.render(<TextBoxComponent/>,document.getElementById("react-dom"));
+        }
+        </script>
+</head>
+
+<body>
+    <div id="react-dom"></div>
+</body>
+
+</html>
+
