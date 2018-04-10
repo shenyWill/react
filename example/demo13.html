@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../plugin/react.js"></script>
+    <script src="../plugin/react-dom.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+</head>
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+        var FormComponent = React.createClass({
+            getInitialState:function() {
+                return {
+                    username:'',
+                    checked:false,
+                    gender:'man'
+                }
+            },
+            submitHandler:function(e) {
+                e.preventDefault();
+                var is = this.state.checked ? '是' : '否';
+                var nawGender = this.state.gender == 'man' ? '帅哥' : '美女';
+                alert(this.state.username + is + nawGender);
+            },
+            changeHandle:function(event) {
+                // console.log(name);
+                var newState = {};
+
+                // 直接从name获取
+                newState[event.target.name] = event.target.name == 'checked' ? event.target.checked : event.target.value;
+                this.setState(newState);
+            },
+            render:function() {
+                return (
+                    <form onSubmit={this.submitHandler}>
+                        <lable htmlFor="username">你的名字：</lable>
+                        <input type="text" value={this.state.username} name="username" id="username" onChange={this.changeHandle} />
+                        <br/>
+                        <lable htmlFor="checkbox">是或者否：</lable>
+                        <input type="checkbox" checked={this.state.checked} name="checked" id="checked" onChange={this.changeHandle} />
+                        <br/>
+                        <lable htmlFor="selection">请选择：</lable>
+                        <select name="gender" value={this.state.gender} onChange={this.changeHandle}>
+                            <option value="man">帅哥</option>
+                            <option value="woman">美女</option>
+                        </select>
+                        <br/>
+                        <button type="submit">提交</button>
+                    </form>
+                )
+            }
+        });
+        ReactDOM.render(<FormComponent/>,document.getElementById('demo'));
+    </script>
+</body>
+</html>
