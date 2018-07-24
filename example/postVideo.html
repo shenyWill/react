@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <!-- <form action="http://172.16.33.116:3000/postVideo" method="post" enctype="multipart/form-data"> -->
+        <input type="text" name="title" class="desc"><br>
+        <input type="file" accept="video/*" capture="camcorder" class="camera-input" id="fileId" onchange="videoChange()" multiple="multiple" name="newVideo">
+        <button class="btn" >提交</button>
+    <!-- </form> -->
+    <script>
+        $('.btn').on('click',function(){
+            var formData = new FormData();
+            var videoNode = document.querySelector("#fileId");
+            var videoObj = videoNode.files[0];
+            // console.log(videoObj)
+            var desc = $('.desc').val();
+            formData.append('fileVideo',videoObj);
+            formData.append('fileDesc',desc)
+
+            $.ajax({
+                url:'http://172.16.33.116:3000/postVideo',
+                method:'post',
+                data:formData,
+                contentType:false,
+                async:false,
+                processData:false,
+                success:function(data) {
+                    alert(data)
+                }
+            })
+            console.log(23)
+        })
+
+        function videoChange(){}
+    </script>
+</body>
+</html>

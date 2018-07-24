@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="http://172.16.33.116:3000/haha" method="get">
+        <input type="file" accept="video/*" capture="camcorder" class="camera-input" id="fileId" onchange="sss()" onclick="haha()">
+        <video id="fileItem" controls="controls" autoplay="autoplay" type="video/mp4" src="./111.mp4" style="display: none">
+        </video>
+        <span id="btn" onclick="ss()">点击</span>
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        var node = document.querySelector("#fileId");
+        var buttonNode = document.getElementById('btn');
+        var setTimeoutStat;
+        
+
+        var video = document.getElementById('fileItem');
+        function haha() {
+            console.log(video.currentSrc)
+            // video.src = './111.mp4'
+        }
+        function sss(event) {
+            var file = new FileReader()
+            file.onload = function () {
+                // console.log( file.result)
+
+            }
+            // console.log(file.result)
+            
+            file.readAsDataURL(node.files[0])
+            node.files[0].name = "hahaha.mp4";
+            console.log(node.files[0].name)
+
+            
+            
+            var hfiles = node.files;
+            var hfile = hfiles[0];
+            var url = URL.createObjectURL(hfile);
+            video.src = url;
+            video.load();
+            video.onloadeddata = function(){
+                video.play();
+                
+            }
+        }
+        function ss() {
+            alert('4:' + video.duration)
+            alert('5:' + node.files[0].size/1048576)
+        }
+    </script>
+</body>
+
+</html>
